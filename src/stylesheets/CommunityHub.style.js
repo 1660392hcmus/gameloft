@@ -76,6 +76,37 @@ export const SocialPostContainer = styled.div`
       transform: rotate(180deg); 
     }
   }
+
+  .load-more {
+    text-align: center;
+    button{
+      width: 161px;
+      height: 49px;
+      border: 1px solid #2699FB;
+      background: none;
+      color: #2699FB;
+    }
+  }
+
+  .post-loadmore {
+    display: block;
+    overflow: hidden;
+    position: relative;
+    background: #fff;
+  }
+
+  .post-loadmore:after {
+    position: absolute;
+    bottom: 0;  
+    height: 100%;
+    width: 100%;
+    content: "";
+    background: linear-gradient(to top,
+      rgba(255,255,255, 1) 5%, 
+      rgba(255,255,255, 0) 95%
+    );
+    pointer-events: none; /* so the text is still selectable */
+}
 `;
 
 export const SocialContainer = styled.div`
@@ -83,8 +114,22 @@ export const SocialContainer = styled.div`
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  @media (max-width: 641px) {
+
+  input {
+    height: 35px;
+    border: 2px solid #2699FB;
+    border-radius: 5px;
+    ::placeholder {
+        color: #2699FB;
+    }
+  }
+
+  @media (max-width: 600px) {
     margin: 5%;
+    input {
+      flex-grow: 1;
+      margin: 10px 0px;
+    }
   }
 `
 
@@ -97,19 +142,12 @@ export const SocialGroup = styled.div`
     height: 40px;
     margin: 0px 15px;
   }
-
-  input {
-    height: 35px;
-    border: 2px solid #2699FB;
-    border-radius: 5px;
-    ::placeholder {
-        color: #2699FB;
-    }
-  }
 `;
 export const Title = styled.div`
+  flex-grow: 2;
+  align-self: center;
   margin-top: ${(props) => !props.allPost && '5%'};
-  font-size: 45px; 
+  font-size: ${(props) => props.allPost ? '30px' : '45px'};
   color: #2699FB;
   font-family: 'Montserrat-Bold';
   font-weight: bold;

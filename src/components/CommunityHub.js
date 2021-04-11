@@ -22,6 +22,9 @@ import arrowIcon from '../assets/icons/arrow.svg';
 import twitter from '../assets/icons/twitter.svg';
 import instagram from '../assets/icons/instagram.svg';
 import fb from '../assets/icons/facebook-circle.svg';
+import { useMediaQuery } from 'react-responsive';
+import { socialPosts } from '../utils/ENUM';
+import Posts from './Posts';
 
 const listGameHub = [
     {
@@ -59,6 +62,7 @@ const settings = {
     slidesToScroll: 1,
     autoplaySpeed: 1000,
     centerMode: true,
+    arrows: false,
     responsive: [
         {
             breakpoint: 1024,
@@ -85,50 +89,32 @@ const settings = {
         }
     ]
 };
+const postsPerPage = 3;
+let arrayForHoldingPosts = [];
 
 const CommunityHub = () => {
+    const isMobile = useMediaQuery({ maxDeviceWidth: 600 })
     //creating the ref
     const customeSlider = React.useRef();
-    // setting slider configurations
-    const [sliderSettings, setSliderSettings] = useState({
-        infinite: true,
-        speed: 500,
-        slidesToShow: 5,
-        slidesToScroll: 2,
-        arrows: false,
-        centerMode: true,
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
-                    infinite: true,
-                }
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 1,
-                    initialSlide: 2,
-                    vertical: true,
-                    verticalSwiping: true,
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1,
-                    initialSlide: 2,
-                    vertical: true,
-                    verticalSwiping: true,
-                }
-            }
-        ]
-    })
     const [counterSlider, setCounterSlider] = React.useState(1);
+    const [postsToShow, setPostsToShow] = useState([]);
+    const [next, setNext] = useState(3);
+
+    const loopWithSlice = (start, end) => {
+        const slicedPosts = socialPosts.slice(start, end);
+        arrayForHoldingPosts = [...arrayForHoldingPosts, ...slicedPosts];
+        setPostsToShow(arrayForHoldingPosts);
+    };
+
+    React.useEffect(() => {
+        loopWithSlice(0, postsPerPage);
+    }, []);
+
+    const handleShowMorePosts = () => {
+        loopWithSlice(next, next + postsPerPage);
+        setNext(next + postsPerPage);
+    };
+
 
     const gotoNext = () => {
         let counter = counterSlider;
@@ -171,25 +157,34 @@ const CommunityHub = () => {
                         <img src={twitter} />
                         <img src={instagram} />
                         <img src={fb} />
-                        <input type='text' placeholder="search"></input>
                     </SocialGroup>
+                    <input type='text' placeholder="Search"></input>
                 </SocialContainer>
-                <Slider {...sliderSettings} ref={customeSlider}>
-                    <SocialCard src={socialPost} style={{ width: 100 }}></SocialCard>
-                    <SocialCard src={socialPost} style={{ width: 100 }}></SocialCard>
-                    <SocialCard src={socialPost} style={{ width: 100 }}></SocialCard>
-                    <SocialCard src={socialPost} style={{ width: 100 }}></SocialCard>
-                    <SocialCard src={socialPost} style={{ width: 100 }}></SocialCard>
-                    <SocialCard src={socialPost} style={{ width: 100 }}></SocialCard>
-                    <SocialCard src={socialPost} style={{ width: 100 }}></SocialCard>
-                    <SocialCard src={socialPost} style={{ width: 100 }}></SocialCard>
-                    <SocialCard src={socialPost} style={{ width: 100 }}></SocialCard>
-                </Slider>
-                <div className="wrapper-button">
-                    <img id="prev" src={arrowIcon} onClick={() => gotoPrev()} />
-                    <p>{counterSlider}/10</p>
-                    <img src={arrowIcon} onClick={() => gotoNext()} />
-                </div>
+                {isMobile ? 
+                <>
+                    <div className="post-loadmore">
+                        <Posts postsToRender={postsToShow} component={SocialCard}/>
+                    </div> 
+                    <div className="load-more">
+                        <button onClick={handleShowMorePosts}>More</button>
+                    </div>
+                </>
+                :
+                <>
+                    <Slider {...settings} ref={customeSlider}>
+                        {socialPosts.map((post) => (
+                            <SocialCard src={socialPost} style={{ width: 100 }}></SocialCard>
+                        ))}
+                    </Slider>
+                    <div className="wrapper-button">
+                        <img id="prev" src={arrowIcon} onClick={() => gotoPrev()} />
+                        <p>{counterSlider}/10</p>
+                        <img src={arrowIcon} onClick={() => gotoNext()} />
+                    </div>
+                </>
+                }
+                
+                
             </SocialPostContainer>
         </CommunityContainer>
     )

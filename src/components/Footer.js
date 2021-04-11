@@ -34,7 +34,7 @@ const Footer = () => {
           </Social>
 
           <select id="country" name="country">
-              <option value="" disabled selected>Flatform</option>
+              <option value="" disabled selected>English</option>
               <option value="australia">Australia</option>
               <option value="canada">Canada</option>
               <option value="usa">USA</option>
@@ -61,7 +61,7 @@ const Footer = () => {
         </GroupRight>
       </UpperContainer>
 
-      <BottomContainer>
+      <BottomContainer> 
         <hr class="new1" />
         <p>©2020 Gameloft. All rights reserved. Gameloft and the Gameloft logo are trademarks of Gameloft in the U.S. and/or other countries.</p>
         <p>All other trademarks are the property of their respective owners.</p>

@@ -28,7 +28,7 @@ export const Hero = styled.div`
     .content {
         margin-left: 20%;
         position: absolute;
-        top: 50%;
+        top: 80%;
         transform: translate(0%, -50%);
         color: white;
     }
@@ -39,7 +39,13 @@ export const Hero = styled.div`
         display: inline;
     }
     .bottom-right {
-        position: absolute;
+        position: fixed;
+        z-index: 10000;
+        display: flex;
+        flex-direction: column;
+        img {
+            margin: 15px 0px;
+        }
         bottom: 8px;
         right: 16px;
     }
@@ -49,6 +55,12 @@ export const Hero = styled.div`
 
     @media (max-width: 768px) {
         height: 80vh;
+        .content {
+            margin-left: 5%;
+        }
+        .content > .content-game {
+            width: 90%;
+        }
     }
 
     @media (max-width: 500px) {

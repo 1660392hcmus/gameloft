@@ -6,6 +6,9 @@ import background from '../assets/images/background.jpg';
 import nintedo from '../assets/icons/nintedo.png';
 import microsoft from '../assets/icons/microsoft.png';
 import steam from '../assets/icons/steam.png';
+import mail from '../assets/icons/mail.svg';
+import support from '../assets/icons/support.svg';
+import share from '../assets/icons/share.svg';
 
 const Header = () => {
   return (
@@ -37,9 +40,9 @@ const Header = () => {
                     <p className="content-game">Lorem ipsum dolor sit amet, consectetur adipiscinlus aem. Aliquam in nisi id lectus auctor mollis. Ut vel nibh venenatis, elementum nulla quis, iaculis quam. Etiam vel ornare metus. In fermentum enim elit.</p>
                 </div>
                 <div className="bottom-right">
-                    <p>icon</p>
-                    <p>icon</p>
-                    <p>icon</p>
+                    <img src={share} />
+                    <img src={mail} />
+                    <img src={support} />
                 </div>
           </Hero>
 

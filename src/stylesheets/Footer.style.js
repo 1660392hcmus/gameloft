@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
 export const FooterContainer = styled.div`
-    height: 100vh;
+    /* height: 100vh; */
     background-color: #2699FB;
 `;
 
 export const UpperContainer = styled.div`
     margin: 0% 20%;
-    padding: 5%;
+    padding: 15% 5% 0% ;
     display: flex;
     justify-content: space-between;
 `;
@@ -28,7 +28,6 @@ export const BottomContainer = styled.div`
 `;
 
 export const GroupLeft = styled.div`
-    padding: 10% 0%;
     img {
         color: white;
     }
@@ -39,7 +38,6 @@ export const GroupLeft = styled.div`
 `;
 
 export const GroupRight = styled.div`
-    padding: 10% 0%;
     p {
         color: #FFFFFF;
     }
