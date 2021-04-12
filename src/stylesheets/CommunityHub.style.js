@@ -79,6 +79,7 @@ export const SocialPostContainer = styled.div`
 
   .load-more {
     text-align: center;
+    margin: 10px 0px;
     button{
       width: 161px;
       height: 49px;
@@ -138,6 +139,7 @@ export const SocialGroup = styled.div`
   flex-wrap: wrap;
 
   img {
+    cursor: pointer;
     width: 40px;
     height: 40px;
     margin: 0px 15px;

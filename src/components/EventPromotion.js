@@ -25,6 +25,8 @@ const EventPromotion = () => {
         centerMode: true,
         centerPadding: "60px",
         focusOnSelect: true,
+        autoplay: true,
+        autoplaySpeed: 2000,
         responsive: [
             {
             breakpoint: 1024,

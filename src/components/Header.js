@@ -17,8 +17,8 @@ const Header = () => {
             <a href="#">
                 <img src={logo}></img>
             </a>
-            <div className="topnav-right">
-                <span>icon</span>
+            <div className="nav-icon">
+                <div></div>
             </div>  
           </Navbar>
 

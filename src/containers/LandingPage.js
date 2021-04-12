@@ -6,6 +6,7 @@ import CommunityHub from '../components/CommunityHub';
 import { LandingPageContainer } from '../stylesheets/LandingGlobal.style';
 import EventPromotion from '../components/EventPromotion';
 import GameContent from '../components/GameContent';
+import PageSection from '../components/PageSection';
 
 const LandingPage = () => {
   return (

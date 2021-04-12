@@ -12,12 +12,7 @@ export const PageSectionWrapper = styled.section`
   width: 100%;
   scroll-snap-align: start;
   z-index: 1;
-  display: flex;
-  justify-content: center;
+  /* display: flex; */
+  /* justify-content: center; */
   align-items: ${(props) => props.align || 'center'};
-  background-image: url(${(props) => props.imgSrc});
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-color: ${(props) => props.bg || '#fff'};
 `;

@@ -7,9 +7,39 @@ export const HeaderWrapper = styled.div`
 
 export const Navbar = styled.div`
     background-color: #D8EDFF;
-    .topnav-right {
+    .nav-icon {
         float: right;
-      }
+        cursor: pointer;
+    }
+    .nav-icon {
+        margin: 1em;
+        width: 40px;
+    }
+
+    .nav-icon:after, 
+    .nav-icon:before, 
+    .nav-icon div {
+        background-color: #000000;
+        border-radius: 3px;
+        content: '';
+        display: block;
+        height: 5px;
+        margin: 7px 0;
+        transition: all .2s ease-in-out;
+    }
+
+    .nav-icon:hover:before {
+        transform: translateY(12px) rotate(135deg);
+    }
+
+    .nav-icon:hover:after {
+        transform: translateY(-12px) rotate(-135deg);
+    }
+
+    .nav-icon:hover div {
+        transform: scale(0);
+    }
+
     position: fixed;
     z-index: 10000;
     top: 0px;
@@ -39,6 +69,7 @@ export const Hero = styled.div`
         display: inline;
     }
     .bottom-right {
+        cursor: pointer;
         position: fixed;
         z-index: 10000;
         display: flex;
@@ -90,6 +121,7 @@ export const DownloadBar = styled.div`
     .download-group{
         display: inline-flex;
         flex-wrap: wrap;
+        cursor: pointer;
     }
 
     @media (max-width: 768px) {
